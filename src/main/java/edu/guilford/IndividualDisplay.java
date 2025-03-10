@@ -15,10 +15,13 @@ public class IndividualDisplay extends Application {
 
     private static Scene scene;
 
+    // Each JavaFX application provides a Stage, a window for the application
     @Override
     public void start(Stage stage) throws IOException {
         // create an instance of the IndividualPane class
+        // IndividualPane is a container for the UI elements
         IndividualPane iPane = new IndividualPane();
+        // The scene hold a container (a Pane or a Group, usually)
         scene = new Scene(iPane, 640, 480);
         stage.setScene(scene);
         stage.show();
