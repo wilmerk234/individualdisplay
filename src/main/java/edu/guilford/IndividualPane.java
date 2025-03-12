@@ -68,8 +68,10 @@ public class IndividualPane extends GridPane {
         this.add(avatarField, 1, 3);
         this.add(submitButton, 2, 0, 2, 1);
         this.add(formattedNameLabel, 2, 1, 2, 1);
+        // Only add each component once to the container
         this.add(avatar, 0, 4, 3, 1);
-
+        avatar.setVisible(false);
+      
         // 4-5. set the event handler for the button
         submitButton.setOnAction(e -> {
             // everything between the { } is essentially the event handler
@@ -89,6 +91,13 @@ public class IndividualPane extends GridPane {
             String avatarFileName = avatarField.getText();
             File avatarFile = new File(this.getClass().getResource(avatarFileName).getFile());
             avatar.setImage(new Image(avatarFile.toURI().toString()));
+            // adding the avatar object to the gridpane here goes badly
+            // because JavaFX does that each time we press the submit button
+            // and we can't add duplicate children to a container
+            //this.add(avatar, 0, 4, 3, 1);
+            avatar.setVisible(true);
+           
+
           
         });
         // 5. set the event handler for the button
