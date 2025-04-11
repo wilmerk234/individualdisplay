@@ -4,18 +4,26 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 
 public class ControlController {
-    @FXML
-    private Slider shapeSlider;
 
     private ShapeList shapeList;
     private ShapePane shapePane;
 
     @FXML
+private Slider slider;
+
+    @FXML
+    public void readSlider() {
+        System.out.println("Slider value: " + slider.getValue());
+    }
+
+    @FXML
     public void processButton() {
         System.out.println("Button pressed");
         shapeList.clear();
-        shapePane.getChildren().clear(); // clear existing shapes
+        shapePane.getChildren().clear();
     }
+
+    // getters setters
 
     public ShapeList getShapeList() {
         return shapeList;
@@ -33,17 +41,6 @@ public class ControlController {
         this.shapePane = shapePane;
     }
 
-    @FXML
-    public void readSlider() {
-        // Get the value from the slider and print it
-        double sliderValue = shapeSlider.getValue();
-        System.out.println("Slider value: " + sliderValue);
+    // tell shapelist to clear and
 
-        // Generate shapes based on the slider value
-        if (shapeList != null && shapePane != null) {
-            int numShapes = (int) sliderValue; // convert to int for number of shapes
-            shapeList.generateShapes(numShapes); // generate new shapes
-            shapePane.updateShapes(); // update the ShapePane with the new shapes
-        }
-    }
 }

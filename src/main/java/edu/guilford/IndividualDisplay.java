@@ -13,15 +13,34 @@ import java.io.IOException;
  */
 public class IndividualDisplay extends Application {
 
+    // Projct 6
     private static Scene scene;
+    
 
-    // Each JavaFX application provides a Stage, a window for the application
     @Override
     public void start(Stage stage) throws IOException {
 
+
+    //     IndividualPane iPane = new IndividualPane();
+    //     // the Scene holds a container (a Pane or a Group, usually), which holds the visual elements
+    //     // IndividualPane is  container tfor the UI elements
+    //     scene = new Scene(loadFXML("control"), 640, 480);
+    //     stage.setScene(scene);
+    //     stage.show();
+    // }
+
+    // static void setRoot(String fxml) throws IOException {
+    //     scene.setRoot(loadFXML(fxml));
+    // }
+
+    // private static Parent loadFXML(String fxml) throws IOException {
+    //     FXMLLoader fxmlLoader = new FXMLLoader(IndividualDisplay.class.getResource(fxml + ".fxml"));
+    //     return fxmlLoader.load();
+    // }
+
         // create an instance of the IndividualPane class
         // IndividualPane is a container for the UI elements
-        IndividualPane iPane = new IndividualPane();
+        // iPane = new IndividualPane();
         // The scene hold a container (a Pane or a Group, usually)
         FXMLLoader loader = new FXMLLoader(getClass().getResource("control.fxml"));
         Parent root = loader.load(); // load the FXML file

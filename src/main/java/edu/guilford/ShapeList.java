@@ -5,18 +5,28 @@ import java.util.Random;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
+import javafx.scene.shape.Shape;
 
 public class ShapeList extends ArrayList<Shape> {
+
+    // formal term: model view controller --> model info of data in this code, then
+    // in ShapePane have the view
+    // controller is the one that controls the view and model
+
     private Random random = new Random();
     private int width;
     private int height;
-    
+
+    // can also have user set size of window, can have attributes that update for
+    // this
+    // constructor:
     public ShapeList(int width, int height) {
         super();
         this.width = width;
         this.height = height;
     }
 
+    // getters and setters
     public int getWidth() {
         return width;
     }
@@ -32,17 +42,24 @@ public class ShapeList extends ArrayList<Shape> {
     public void setHeight(int height) {
         this.height = height;
     }
-    
+
+    // methods:
+
     // method to generate a random color
     public Color randomColor() {
-        // generate random values for red, green, blue, and alpha (opacity)
-        // each value is between 0.0 and 1.0
-        return new Color(random.nextDouble(), random.nextDouble(), random.nextDouble(), 
-        random.nextDouble() * 0.7 + 0.3); // alpha value between 0.3 and 1.0
+        // create a random color
+        return new Color(random.nextDouble(), random.nextDouble(), random.nextDouble(),
+                random.nextDouble() * 0.7 + 0.3);
+        // rand 0.0-1.0
+        // red, green, bed, and alpha, 4th one is transparency/opacity
+        // 0.0 = invisible, 0.1 = barely visible, 1.0 = fully visible
+
     }
 
-    public void generateShapes(int numShapes) {
-        this.clear(); // clear the list before generating new shapes
+    // generate some shapes
+    public void generateShapes(int numShapes) { // param int numShapes because slider will control this
+        this.clear(); // clear the list before adding new shapes
+        // generate a random shape
         // loop to create the specified number of shapes of different types
 
         for (int i = 0; i < numShapes; i++) {
@@ -50,7 +67,7 @@ public class ShapeList extends ArrayList<Shape> {
             int shapeType = random.nextInt(3); // 0, 1, or 2 for circle, rectangle, or triangle
             Shape shape = null;
             Color color = randomColor();
-            
+
             // select what shape to create based on the random shapeType
             switch (shapeType) {
                 case 0: // circle
@@ -76,7 +93,7 @@ public class ShapeList extends ArrayList<Shape> {
                     shape = new javafx.scene.shape.Polygon(x1, y1, x2, y2, x3, y3);
                     break;
             }
-            
+
             if (shape != null) {
                 shape.setFill(color);
                 shape.setStroke(Color.BLACK); // set stroke color to black
